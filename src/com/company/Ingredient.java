@@ -4,12 +4,16 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class Ingredient {
+    private static final int ATTRIBUTE_SLOTS = 5;
+
     private final String name;
     private final Dictionary<MAXIM_TYPE, Integer> maxims;
+    private final ATTRIBUTE_EFFECT[] attributes;
 
     public Ingredient(String name) {
         this.name = name;
         this.maxims = new Hashtable<>(MAXIM_TYPE.values().length);
+        this.attributes = new ATTRIBUTE_EFFECT[ATTRIBUTE_SLOTS];
 
         for (MAXIM_TYPE type : MAXIM_TYPE.values()) {
             this.maxims.put(type, 0);
@@ -28,6 +32,10 @@ public class Ingredient {
         return this.maxims.get(type);
     }
 
+    public ATTRIBUTE_EFFECT[] getAttributes() {
+        return this.attributes;
+    }
+
     public int getMaximCount() {
         int count = 0;
 
@@ -36,5 +44,28 @@ public class Ingredient {
         }
 
         return count;
+    }
+
+    public void addAttribute(int pos, ATTRIBUTE_EFFECT effect) {
+        if (this.attributes[pos] != null) {
+            if (this.attributes[pos] != effect) {
+                this.attributes[pos] = ATTRIBUTE_EFFECT.RANDOM;
+            }
+        } else {
+            this.attributes[pos] = effect;
+        }
+    }
+
+    public double getAttrModifier() {
+        double mod = 0;
+        for (ATTRIBUTE_EFFECT effect : this.attributes) {
+            if (effect == null) {
+                mod +=1;
+            } else {
+                mod += effect.getModifier();
+            }
+        }
+
+        return mod/this.attributes.length;
     }
 }
