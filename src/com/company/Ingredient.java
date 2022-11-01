@@ -46,30 +46,11 @@ public class Ingredient {
         return count;
     }
 
-    public void addAttribute(int pos, ATTRIBUTE_EFFECT effect) {
+    public void setAttribute(int pos, ATTRIBUTE_EFFECT effect) {
         if (pos < 0 || pos >= this.attributes.length) {
             throw new IndexOutOfBoundsException("Position out of bounds (" + pos + ")");
         }
 
-        if (this.attributes[pos] != null) {
-            if (this.attributes[pos] != effect) {
-                this.attributes[pos] = ATTRIBUTE_EFFECT.RANDOM;
-            }
-        } else {
-            this.attributes[pos] = effect;
-        }
-    }
-
-    public double getAttrModifier() {
-        double mod = 0;
-        for (ATTRIBUTE_EFFECT effect : this.attributes) {
-            if (effect == null) {
-                mod +=1;
-            } else {
-                mod += effect.getModifier();
-            }
-        }
-
-        return mod/this.attributes.length;
+        this.attributes[pos] = effect;
     }
 }
