@@ -49,17 +49,12 @@ class IngredientTest {
     }
 
     @Test
-    void addAttribute() {
+    void setAttribute() {
         Ingredient ingredient = new Ingredient("test");
         ATTRIBUTE_EFFECT[] correctEffects = new ATTRIBUTE_EFFECT[]{null, ATTRIBUTE_EFFECT.POSITIVE, null, null, null};
 
-        ingredient.addAttribute(2, ATTRIBUTE_EFFECT.POSITIVE);
+        ingredient.setAttribute(1, ATTRIBUTE_EFFECT.POSITIVE);
 
         Assertions.assertArrayEquals(correctEffects, ingredient.getAttributes());
-
-    }
-
-    @Test
-    void getAttrModifier() {
     }
 }
