@@ -47,6 +47,10 @@ public class Ingredient {
     }
 
     public void addAttribute(int pos, ATTRIBUTE_EFFECT effect) {
+        if (pos < 0 || pos >= this.attributes.length) {
+            throw new IndexOutOfBoundsException("Position out of bounds (" + pos + ")");
+        }
+
         if (this.attributes[pos] != null) {
             if (this.attributes[pos] != effect) {
                 this.attributes[pos] = ATTRIBUTE_EFFECT.RANDOM;
