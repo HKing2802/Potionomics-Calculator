@@ -4,7 +4,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 public class Ingredient {
-    private static final int ATTRIBUTE_SLOTS = 5;
+    public static final int ATTRIBUTE_SLOTS = 5;
 
     private final String name;
     private final Dictionary<MAXIM_TYPE, Integer> maxims;
