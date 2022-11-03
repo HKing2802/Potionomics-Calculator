@@ -10,12 +10,12 @@ class CauldronTest {
         Cauldron cauldron = new Cauldron(6, 140);
 
         assertEquals(6, cauldron.getIngredientCap());
-        assertEquals(140, cauldron.getMaximCap());
+        assertEquals(140, cauldron.getMagiminCap());
         assertArrayEquals(new ATTRIBUTE_EFFECT[5], cauldron.getAttributes());
     }
 
     @Test
-    void getMaximCount() {
+    void getMagiminCount() {
         Cauldron cauldron = new Cauldron(6, 140);
         Ingredient ingredient = new Ingredient("test");
         Ingredient ingredient2 = new Ingredient("test 2");
@@ -26,14 +26,14 @@ class CauldronTest {
         cauldron.addIngredient(ingredient);
         cauldron.addIngredient(ingredient2);
 
-        assertEquals(30, cauldron.getMaximCount());
+        assertEquals(30, cauldron.getMagiminCount());
     }
 
     @Test
-    void getMaximCountZero() {
+    void getMagiminCountZero() {
         Cauldron cauldron = new Cauldron(6, 140);
 
-        assertEquals(0, cauldron.getMaximCount());
+        assertEquals(0, cauldron.getMagiminCount());
     }
 
     @Test
@@ -74,7 +74,7 @@ class CauldronTest {
 
         cauldron.addIngredient(ingredient);
 
-        assertEquals(15, cauldron.getMaximCount());
+        assertEquals(15, cauldron.getMagiminCount());
         assertTrue(cauldron.getIngredients().contains(ingredient));
     }
 
@@ -85,9 +85,12 @@ class CauldronTest {
         cauldron.addIngredient(ingredient);
         Object[] startingIngredientsArr = cauldron.getIngredients().toArray();
 
-        cauldron.addIngredient(ingredient);
-
-        assertArrayEquals(startingIngredientsArr, cauldron.getIngredients().toArray());
+        try {
+            cauldron.addIngredient(ingredient);
+            fail("addIngredient should throw error");
+        } catch (IllegalArgumentException e) {
+            assertArrayEquals(startingIngredientsArr, cauldron.getIngredients().toArray());
+        }
     }
 
     @Test
@@ -129,7 +132,7 @@ class CauldronTest {
     }
 
     @Test
-    void hasRandomEffect() {
+    void getNumRandomEffect() {
         Cauldron cauldron = new Cauldron(6, 140);
         Ingredient ingredient = new Ingredient("test");
         ingredient.setAttribute(1, ATTRIBUTE_EFFECT.POSITIVE);
@@ -138,10 +141,10 @@ class CauldronTest {
 
         cauldron.addIngredient(ingredient);
 
-        assertFalse(cauldron.hasRandomEffect());
+        assertEquals(0, cauldron.getNumRandomEffect());
 
         cauldron.addIngredient(ingredient2);
 
-        assertTrue(cauldron.hasRandomEffect());
+        assertEquals(1, cauldron.getNumRandomEffect());
     }
 }
