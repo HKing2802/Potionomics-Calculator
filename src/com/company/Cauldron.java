@@ -37,14 +37,14 @@ public class Cauldron {
         int count = 0;
 
         for (Ingredient ingredient : this.ingredients) {
-            count += ingredient.getMaximCount();
+            count += ingredient.getMagiminsCount();
         }
 
         return count;
     }
 
     public boolean canAddIngredient(Ingredient ingredient) {
-        return ((ingredient.getMaximCount() + this.getMaximCount()) < this.maximCap) && this.ingredients.size() < this.ingredientCap;
+        return ((ingredient.getMagiminsCount() + this.getMaximCount()) < this.maximCap) && this.ingredients.size() < this.ingredientCap;
     }
 
     public void addIngredient(Ingredient ingredient) {

@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Locale;
 
-public enum MAXIM_TYPE {
+public enum MAGIMIN_TYPE {
     A ("a"),
     B ("b"),
     C ("c"),
@@ -11,7 +11,7 @@ public enum MAXIM_TYPE {
 
     private final String letter;
 
-    MAXIM_TYPE(String letter) {
+    MAGIMIN_TYPE(String letter) {
         this.letter = letter;
     }
 
@@ -19,14 +19,14 @@ public enum MAXIM_TYPE {
         return letter;
     }
 
-    public static MAXIM_TYPE getType(String letter) {
+    public static MAGIMIN_TYPE getType(String letter) {
         String let = letter.toLowerCase(Locale.ROOT);
-        for (MAXIM_TYPE type : MAXIM_TYPE.values()) {
+        for (MAGIMIN_TYPE type : MAGIMIN_TYPE.values()) {
             if (type.letter.equals(let)) {
                 return type;
             }
         }
 
-        throw new IllegalArgumentException("Letter does not have associated Maxim type (" + letter + ")");
+        throw new IllegalArgumentException("Letter does not have associated Magimin type (" + letter + ")");
     }
 }

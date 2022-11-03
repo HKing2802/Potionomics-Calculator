@@ -3,20 +3,29 @@ package com.company;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
+/**
+ * Class representing an ingredient to be used in a potion recipe
+ * Ingredients contain a number of magimins, and optionally can have positive or negative attributes
+ * @author HKing
+ */
 public class Ingredient {
     public static final int ATTRIBUTE_SLOTS = 5;
 
     private final String name;
-    private final Dictionary<MAXIM_TYPE, Integer> maxims;
+    private final Dictionary<MAGIMIN_TYPE, Integer> magimins;
     private final ATTRIBUTE_EFFECT[] attributes;
 
+    /**
+     * Constructor
+     * @param name Name of the Ingredient
+     */
     public Ingredient(String name) {
         this.name = name;
-        this.maxims = new Hashtable<>(MAXIM_TYPE.values().length);
+        this.magimins = new Hashtable<>(MAGIMIN_TYPE.values().length);
         this.attributes = new ATTRIBUTE_EFFECT[ATTRIBUTE_SLOTS];
 
-        for (MAXIM_TYPE type : MAXIM_TYPE.values()) {
-            this.maxims.put(type, 0);
+        for (MAGIMIN_TYPE type : MAGIMIN_TYPE.values()) {
+            this.magimins.put(type, 0);
         }
     }
 
@@ -24,23 +33,27 @@ public class Ingredient {
         return this.name;
     }
 
-    public void setMaxim(MAXIM_TYPE type, int value) {
-        this.maxims.put(type, value);
+    public void setMagimin(MAGIMIN_TYPE type, int value) {
+        this.magimins.put(type, value);
     }
 
-    public int getMaximAmount(MAXIM_TYPE type) {
-        return this.maxims.get(type);
+    public int getMagiminAmount(MAGIMIN_TYPE type) {
+        return this.magimins.get(type);
     }
 
     public ATTRIBUTE_EFFECT[] getAttributes() {
         return this.attributes;
     }
 
-    public int getMaximCount() {
+    /**
+     * Gets the total number of magimins
+     * @return int count of magimins
+     */
+    public int getMagiminsCount() {
         int count = 0;
 
-        for (MAXIM_TYPE type : MAXIM_TYPE.values()) {
-            count += this.maxims.get(type);
+        for (MAGIMIN_TYPE type : MAGIMIN_TYPE.values()) {
+            count += this.magimins.get(type);
         }
 
         return count;

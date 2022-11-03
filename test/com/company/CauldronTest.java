@@ -19,9 +19,9 @@ class CauldronTest {
         Cauldron cauldron = new Cauldron(6, 140);
         Ingredient ingredient = new Ingredient("test");
         Ingredient ingredient2 = new Ingredient("test 2");
-        ingredient.setMaxim(MAXIM_TYPE.C, 18);
-        ingredient2.setMaxim(MAXIM_TYPE.A, 10);
-        ingredient2.setMaxim(MAXIM_TYPE.E, 2);
+        ingredient.setMagimin(MAGIMIN_TYPE.C, 18);
+        ingredient2.setMagimin(MAGIMIN_TYPE.A, 10);
+        ingredient2.setMagimin(MAGIMIN_TYPE.E, 2);
 
         cauldron.addIngredient(ingredient);
         cauldron.addIngredient(ingredient2);
@@ -58,7 +58,7 @@ class CauldronTest {
     void canAddIngredientFalseMaxim() {
         Cauldron cauldron = new Cauldron(7, 10);
         Ingredient ingredient = new Ingredient("test");
-        ingredient.setMaxim(MAXIM_TYPE.A, 10);
+        ingredient.setMagimin(MAGIMIN_TYPE.A, 10);
 
         cauldron.addIngredient(ingredient);
 
@@ -69,8 +69,8 @@ class CauldronTest {
     void addIngredient() {
         Cauldron cauldron = new Cauldron(6, 140);
         Ingredient ingredient = new Ingredient("test");
-        ingredient.setMaxim(MAXIM_TYPE.E, 10);
-        ingredient.setMaxim(MAXIM_TYPE.D, 5);
+        ingredient.setMagimin(MAGIMIN_TYPE.E, 10);
+        ingredient.setMagimin(MAGIMIN_TYPE.D, 5);
 
         cauldron.addIngredient(ingredient);
 
