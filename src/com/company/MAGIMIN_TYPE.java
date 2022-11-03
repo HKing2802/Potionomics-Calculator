@@ -2,6 +2,11 @@ package com.company;
 
 import java.util.Locale;
 
+/**
+ * Enum representing the possible types of magimins, A-E, and their associated letter as a String
+ *
+ * @author HKing
+ */
 public enum MAGIMIN_TYPE {
     A ("a"),
     B ("b"),
