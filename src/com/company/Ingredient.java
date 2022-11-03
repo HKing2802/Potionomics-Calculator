@@ -59,9 +59,19 @@ public class Ingredient {
         return count;
     }
 
+    /**
+     * Sets an Attribute slot to a given effect, either Positive or Negative.
+     * @param pos position of the attribute (0-4)
+     * @param effect The effect of the attribute, either Positive or Negative
+     * @throws IllegalArgumentException if attribute is Random
+     */
     public void setAttribute(int pos, ATTRIBUTE_EFFECT effect) {
         if (pos < 0 || pos >= this.attributes.length) {
             throw new IndexOutOfBoundsException("Position out of bounds (" + pos + ")");
+        }
+
+        if (effect == ATTRIBUTE_EFFECT.RANDOM) {
+            throw new IllegalArgumentException("Attribute cannot be random in Ingredient");
         }
 
         this.attributes[pos] = effect;
