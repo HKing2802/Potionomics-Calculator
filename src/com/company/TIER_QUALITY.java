@@ -34,11 +34,11 @@ public enum TIER_QUALITY {
     public static int getStarCount(int magiminCount) {
         TIER_QUALITY tier = TIER_QUALITY.getTierQuality(magiminCount);
         for (int i = 0; i < tier.getThresholds().length; i++) {
-            if (magiminCount > tier.getThresholds()[i]) {
+            if (magiminCount <= tier.getThresholds()[i]) {
                 return i - 1;
             }
         }
 
-        throw new IndexOutOfBoundsException("Found tier does not contain magimin count within thresholds.");
+        return 5;
     }
 }
