@@ -15,13 +15,14 @@ class TIER_QUALITYTest {
 
     @Test
     void getTierQualityBoarder() {
-        TIER_QUALITY quality = TIER_QUALITY.getTierQuality(290);
+        TIER_QUALITY quality = TIER_QUALITY.getTierQuality(59);
 
-        assertEquals(TIER_QUALITY.GRAND, quality);
+        assertEquals(TIER_QUALITY.MINOR, quality);
     }
 
     @Test
     void getStarCount() {
-
+        assertEquals(1, TIER_QUALITY.getStarCount(190));
+        assertEquals(5, TIER_QUALITY.getStarCount(59));
     }
 }
